@@ -1,11 +1,11 @@
-# 🏀 March Machine Learning Mania 2026 — 6th Place Solution
+# March Machine Learning Mania 2026 — 6th Place Solution
 
 **Final Brier Score:** `"0.1181191"`  
 **Final Rank:** 🥇 **6th** / 3,485 teams
 
 ---
 
-## 📌 Overview
+##  Overview
 
 This repository contains my solution for the **March Machine Learning Mania 2026** Kaggle competition.
 
@@ -15,36 +15,35 @@ My approach relies on a **simple but highly effective ensemble** of three indepe
 
 ---
 
-## 🧠 Solution Summary
+##  Solution Summary
 
 The final submission is obtained by **averaging predictions** from three diverse models:
 
 | # | Model | Key Features |
 |---|-------|---------------|
-| 1️⃣ | **Elo-Based Model** | Margin-of-victory adjusted Elo ratings, seasonal decay |
-| 2️⃣ | **Four Factors Model** | eFG%, TOV%, ORB%, FTR (Dean Oliver's framework) |
-| 3️⃣ | **Context Model** | Late-season momentum, conference strength, coaching experience |
+| 1️ | **Elo-Based Model** | Margin-of-victory adjusted Elo ratings, seasonal decay |
+| 2️ | **Four Factors Model** | eFG%, TOV%, ORB%, FTR (Dean Oliver's framework) |
+| 3️ | **Context Model** | Late-season momentum, conference strength, coaching experience |
 
 ---
 
-## 🔗 Final Ensemble
+##  Final Ensemble
 
 Predictions are combined using **simple averaging**:
 
 ```python
 final_pred = (pred_elo + pred_ff + pred_ctx) / 3
 ```
-🔧 Post-processing
+## Post-processing
 Applied minor calibration adjustments on select matchups (mainly women's tournament)
 Integrated external signal from 25 human brackets:
-
 P_final = 0.95 * P_model + 0.05 * P_human 
 Minor manual corrections were applied during post-processing to fix input inconsistencies (e.g., accidental replacement of 0 with 2 due to keyboard input).
 
 Clipped probabilities to [0.005, 0.995]
 ---
 
-⚙️ Key Design Choices
+## Key Design Choices
 
 - Model diversity over complexity
 - Feature engineering > hyperparameter tuning
@@ -53,7 +52,7 @@ Clipped probabilities to [0.005, 0.995]
 
 ---
 
-📊 Validation
+## Validation
 
 - Training data: historical NCAA tournaments
 - Validation seasons: 2022–2025
@@ -63,7 +62,7 @@ The ensemble consistently outperformed individual models in validation.
 
 ---
 
-📉 Failure Analysis (Short)
+## Failure Analysis (Short)
 
 - Struggled in:
   - Close matchups (similar seeds)
@@ -74,40 +73,40 @@ The ensemble consistently outperformed individual models in validation.
 
 ---
 
-🛠️ Reproduction
+## Reproduction
 
 1. Install Requirements
-
+```python
 pip install -r requirements.txt
-
+```
 Or manually:
-
+```python
 pip install numpy pandas scikit-learn lightgbm xgboost catboost kaggle
-
+```
 ---
 
 2. Download Data
 
 You need Kaggle API access:
-
+```python
 pip install kaggle
 kaggle competitions download -c march-machine-learning-mania-2026 -p data/
 cd data
 unzip "*.zip"
 rm *.zip
 cd ..
-
+```
 ---
 
 3. Run Pipelines
 
 Run the three notebooks (or scripts):
-
+```python
 notebooks/
 ├── elo_model.ipynb
 ├── four_factors_model.ipynb
 ├── context_model.ipynb
-
+```
 Each notebook generates predictions.
 
 ---
@@ -118,11 +117,11 @@ final_pred = (pred1 + pred2 + pred3) / 3
 
 Apply clipping:
 
-final_pred = np.clip(final_pred, 0.05, 0.95)
+final_pred = np.clip(final_pred, 0.005, 0.995)
 
 ---
 
-📁 Repository Structure
+## Repository Structure
 
 .
 ├── data/
@@ -134,7 +133,7 @@ final_pred = np.clip(final_pred, 0.05, 0.95)
 
 ---
 
-💡 Key Takeaways
+## Key Takeaways
 
 - Simple averaging of strong models can outperform complex ensembles
 - Feature quality matters more than model complexity
@@ -143,7 +142,7 @@ final_pred = np.clip(final_pred, 0.05, 0.95)
 
 ---
 
-🔮 Possible Improvements
+## Possible Improvements
 
 - Weighted averaging instead of uniform
 - Probability calibration (Isotonic / Platt scaling)
@@ -152,7 +151,7 @@ final_pred = np.clip(final_pred, 0.05, 0.95)
 
 ---
 
-🙌 Acknowledgments
+## Acknowledgments
 
 Thanks to the Kaggle community for valuable discussions and shared insights.
 
