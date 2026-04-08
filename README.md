@@ -1,55 +1,38 @@
-🏀 March Machine Learning Mania 2026 — 6th Place Solution
+# 🏀 March Machine Learning Mania 2026 — 6th Place Solution
 
-Final Brier Score: "0.1181191"
-Final Rank: 🥇 6th / 3,485 teams
-
----
-
-📌 Overview
-
-This repository contains my solution for the March Machine Learning Mania 2026 Kaggle competition.
-
-The objective is to predict the probability that one NCAA team beats another, evaluated using Brier Score (mean squared error of probabilities).
-
-My approach relies on a simple but highly effective ensemble of three independent modeling pipelines.
+**Final Brier Score:** `"0.1181191"`  
+**Final Rank:** 🥇 **6th** / 3,485 teams
 
 ---
 
-🧠 Solution Summary
+## 📌 Overview
 
-The final submission is obtained by averaging predictions from three diverse models:
+This repository contains my solution for the **March Machine Learning Mania 2026** Kaggle competition.
 
-1️⃣ Elo-Based Model
+The objective is to predict the probability that one NCAA team beats another, evaluated using **Brier Score** (mean squared error of probabilities).
 
-- Margin-of-victory adjusted Elo ratings
-- Seasonal regression (decay between seasons)
-- Captures team strength dynamics
-
-2️⃣ Four Factors Model
-
-- Based on Dean Oliver's framework:
-  - Effective FG% (eFG%)
-  - Turnover Rate (TOV%)
-  - Offensive Rebound % (ORB%)
-  - Free Throw Rate (FTR)
-- Represents true on-court performance
-
-3️⃣ Context Model
-
-- Late-season momentum
-- Conference strength (via Elo aggregation)
-- Coaching tournament experience
-
-👉 Each pipeline is trained independently with different feature sets.
+My approach relies on a **simple but highly effective ensemble** of three independent modeling pipelines.
 
 ---
 
-🔗 Final Ensemble
+## 🧠 Solution Summary
 
-Predictions are combined using simple averaging:
+The final submission is obtained by **averaging predictions** from three diverse models:
 
+| # | Model | Key Features |
+|---|-------|---------------|
+| 1️⃣ | **Elo-Based Model** | Margin-of-victory adjusted Elo ratings, seasonal decay |
+| 2️⃣ | **Four Factors Model** | eFG%, TOV%, ORB%, FTR (Dean Oliver's framework) |
+| 3️⃣ | **Context Model** | Late-season momentum, conference strength, coaching experience |
+
+---
+
+## 🔗 Final Ensemble
+
+Predictions are combined using **simple averaging**:
+
+```python
 final_pred = (pred_elo + pred_ff + pred_ctx) / 3
-
 🔧 Post-processing
 Applied minor calibration adjustments on select matchups (mainly women's tournament)
 Integrated external signal from 25 human brackets:
