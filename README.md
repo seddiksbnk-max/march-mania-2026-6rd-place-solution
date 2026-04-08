@@ -44,8 +44,10 @@ P_final = 0.95 * P_model + 0.05 * P_human
 
 Minor manual corrections were applied during post-processing to fix input inconsistencies (e.g., accidental replacement of 0 with 2 due to keyboard input).
 
-final_pred = np.clip(final_pred, 0.005, 0.995)
+```python
 
+final_pred = np.clip(final_pred, 0.005, 0.995)
+```
 ---
 
 ## Key Design Choices
