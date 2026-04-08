@@ -167,3 +167,7 @@ final_pred = np.clip(final_pred, 0.005, 0.995)
 Thanks to the Kaggle community for valuable discussions and shared insights.
 
 ---
+Competition
+[March Machine Learning Mania 2026](https://www.kaggle.com/competitions/march-machine-learning-mania-2026/overview)  on Kaggle.
+
+---
