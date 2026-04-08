@@ -35,8 +35,8 @@ Predictions are combined using **simple averaging**:
 final_pred = (pred_elo + pred_ff + sub_pred_ctx1+sub_pred_ctx2+sub_pred_ctx3+sub_pred_ctx4+sub_pred_ctx5+sub_pred_ctx6+sub_pred_ctx7+sub_pred_ctx8) / 10
 ```
 ## Post-processing
-Applied minor calibration adjustments on select matchups (mainly women's tournament)
-Integrated external signal from 25 human brackets (mainly men's tournament):
+Applied minor calibration adjustments on select matchups ( women's tournament)
+Integrated external signal from 25 human brackets ( men's tournament):
 ```python
 
 P_final = 0.95 * P_model + 0.05 * P_human
