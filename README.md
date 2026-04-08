@@ -36,7 +36,7 @@ final_pred = (pred_elo + pred_ff + sub_pred_ctx1+sub_pred_ctx2+sub_pred_ctx3+sub
 ```
 ## Post-processing
 Applied minor calibration adjustments on select matchups (mainly women's tournament)
-Integrated external signal from 25 human brackets:
+Integrated external signal from 25 human brackets (mainly men's tournament):
 ```python
 
 P_final = 0.95 * P_model + 0.05 * P_human
