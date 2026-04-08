@@ -9,7 +9,7 @@
 
 This repository contains my solution for the **March Machine Learning Mania 2026** Kaggle competition.
 
-The objective is to predict the probability that one NCAA team beats another, evaluated using **Brier Score** (mean squared error of probabilities).
+The objective is to predict the probability that one NCAA team beats another, evaluated using **Brier Score**  .
 
 My approach relies on a **simple but highly effective ensemble** of three independent modeling pipelines.
 
