@@ -33,6 +33,7 @@ Predictions are combined using **simple averaging**:
 
 ```python
 final_pred = (pred_elo + pred_ff + pred_ctx) / 3
+```
 🔧 Post-processing
 Applied minor calibration adjustments on select matchups (mainly women's tournament)
 Integrated external signal from 25 human brackets:
