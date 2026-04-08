@@ -32,7 +32,7 @@ The final submission is obtained by **averaging predictions** from three diverse
 Predictions are combined using **simple averaging**:
 
 ```python
-final_pred = (pred_elo + pred_ff + pred_ctx) / 3
+final_pred = (pred_elo + pred_ff + sub_pred_ctx1+sub_pred_ctx2+sub_pred_ctx3+sub_pred_ctx4+sub_pred_ctx5+sub_pred_ctx6+sub_pred_ctx7+sub_pred_ctx8) / 10
 ```
 ## Post-processing
 Applied minor calibration adjustments on select matchups (mainly women's tournament)
@@ -40,7 +40,8 @@ Integrated external signal from 25 human brackets:
 P_final = 0.95 * P_model + 0.05 * P_human 
 Minor manual corrections were applied during post-processing to fix input inconsistencies (e.g., accidental replacement of 0 with 2 due to keyboard input).
 
-Clipped probabilities to [0.005, 0.995]
+final_pred = np.clip(final_pred, 0.005, 0.995)
+
 ---
 
 ## Key Design Choices
@@ -112,16 +113,20 @@ Each notebook generates predictions.
 ---
 
 4. Ensemble Predictions
+```python
 
-final_pred = (pred1 + pred2 + pred3) / 3
+final_pred = (pred_elo + pred_ff + sub_pred_ctx1+sub_pred_ctx2+sub_pred_ctx3+sub_pred_ctx4+sub_pred_ctx5+sub_pred_ctx6+sub_pred_ctx7+sub_pred_ctx8) / 10```
 
 Apply clipping:
+```python
 
 final_pred = np.clip(final_pred, 0.005, 0.995)
+```
 
 ---
 
 ## Repository Structure
+```python
 
 .
 ├── data/
@@ -130,7 +135,7 @@ final_pred = np.clip(final_pred, 0.005, 0.995)
 ├── submission/
 ├── SOLUTION_WRITEUP.md
 └── README.md
-
+```
 ---
 
 ## Key Takeaways
